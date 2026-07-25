@@ -1,0 +1,16 @@
+<Solution>
+  <Folder Name="/src/" />
+  <Folder Name="/src/EmployeeManagement.API/">
+    <Project Path="EmployeeManagement.API/EmployeeManagement.API.csproj" Id="7f7e582c-64d3-4948-92c0-6313e9dfb198" />
+  </Folder>
+  <Folder Name="/src/EmployeeManagement.Application/">
+    <Project Path="EmployeeManagement.Application/EmployeeManagement.Application.csproj" />
+  </Folder>
+  <Folder Name="/src/EmployeeManagement.Domain/">
+    <Project Path="EmployeeManagement.Domain/EmployeeManagement.Domain.csproj" />
+  </Folder>
+  <Folder Name="/src/EmployeeManagement.Infrastructure/">
+    <Project Path="EmployeeManagement.Infrastructure/EmployeeManagement.Infrastructure.csproj" />
+  </Folder>
+  <Folder Name="/test/" />
+</Solution>
