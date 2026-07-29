@@ -3,17 +3,20 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using EmployeeManagement.Domain.Common;
 
 namespace EmployeeManagement.Domain.Entities
 {
-    public  class Department
+    public  class Department:BaseEntity
 
     {
-        public int id {  get; set; }
+      
 
         public string Name { get; set; } = string.Empty;
 
         public string description { get; set; }=string.Empty;
+
+        public ICollection<Employee> Employees { get; set; } = new List<Employee>();
 
 
     }
