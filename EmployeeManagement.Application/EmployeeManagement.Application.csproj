@@ -10,4 +10,19 @@
     <ProjectReference Include="..\EmployeeManagement.Domain\EmployeeManagement.Domain.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Common\" />
+    <Folder Include="Features\LeaveRequests\Commands\DeleteLeaveRequest\" />
+    <Folder Include="Features\LeaveRequests\Commands\UpdateLeaveRequest\" />
+    <Folder Include="Features\Roles\Commands\CreateRole\" />
+    <Folder Include="Features\Roles\Commands\DeleteRole\" />
+    <Folder Include="Features\Roles\Commands\UpdateRole\" />
+    <Folder Include="Interfaces\Services\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="FluentValidation" Version="12.1.1" />
+    <PackageReference Include="MediatR" Version="14.2.0" />
+  </ItemGroup>
+
 </Project>

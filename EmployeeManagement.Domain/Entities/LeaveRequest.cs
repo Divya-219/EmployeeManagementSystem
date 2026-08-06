@@ -82,6 +82,15 @@ namespace EmployeeManagement.Domain.Entities
             StartDate = startDate;
             EndDate = endDate;
         }
+        public void ChangeLeaveType(LeaveType leaveType)
+        {
+            LeaveType = leaveType;
+        }
+
+        public void ChangeStatus(LeaveStatus status)
+        {
+            Status = status;
+        }
 
     }
 }
