@@ -40,9 +40,14 @@ namespace EmployeeManagement.Domain.Entities
 
         public ICollection <LeaveRequest> LeavesRequests { get; private set; }=new List<LeaveRequest>();
 
+        private Employee()
+        {
+        }
 
         public Employee(string firstName, String lastName, string email, String phoneNumber, DateTime hireDate, Decimal salary, int departmentid, int roleid)
+       
         {
+
             //Rule 1: First Name is required
 
             if (string.IsNullOrWhiteSpace(firstName))

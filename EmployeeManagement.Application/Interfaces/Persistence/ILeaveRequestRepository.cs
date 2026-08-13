@@ -8,17 +8,7 @@ using EmployeeManagement.Domain.Entities;
 namespace EmployeeManagement.Application.Interfaces.Persistence;
 
 
-public interface ILeaveRequestRepository
+public interface ILeaveRequestRepository:IBaseRepository<LeaveRequest>
 {
-    Task<LeaveRequest?> GetByIdAsync(int id);
-
-    Task<IEnumerable<LeaveRequest>> GetAllAsync();
-
-    Task AddAsync(LeaveRequest leaveRequest);
-
-    Task UpdateAsync(LeaveRequest leaveRequest);
-
-    Task DeleteAsync(LeaveRequest leaveRequest);
-
-    Task<bool> ExistsAsync(int id);
+    
 }

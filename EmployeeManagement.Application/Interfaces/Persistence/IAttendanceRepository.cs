@@ -7,17 +7,7 @@ using EmployeeManagement.Domain.Entities;
 
 namespace EmployeeManagement.Application.Interfaces.Persistence;
 
-public interface IAttendanceRepository
+public interface IAttendanceRepository :IBaseRepository<Attendance>
 {
-    Task<Attendance?> GetByIdAsync(int id);
-
-    Task<IEnumerable<Attendance>> GetAllAsync();
-
-    Task AddAsync(Attendance attendance);
-
-    Task UpdateAsync(Attendance attendance);
-
-    Task DeleteAsync(Attendance attendance);
-
-    Task<bool> ExistsAsync(int id);
+    
 }
