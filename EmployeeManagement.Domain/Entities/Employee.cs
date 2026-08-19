@@ -19,7 +19,7 @@ namespace EmployeeManagement.Domain.Entities
 
         public string PhoneNumber {  get; private set; }  = string.Empty;
 
-        public DateTime HireDate { get; private set; }
+        public DateOnly HireDate { get; private set; }
 
         public decimal Salary { get; private set; }
 
@@ -44,7 +44,7 @@ namespace EmployeeManagement.Domain.Entities
         {
         }
 
-        public Employee(string firstName, String lastName, string email, String phoneNumber, DateTime hireDate, Decimal salary, int departmentid, int roleid)
+        public Employee(string firstName, String lastName, string email, String phoneNumber, DateOnly hireDate, Decimal salary, int departmentid, int roleid)
        
         {
 
@@ -82,7 +82,7 @@ namespace EmployeeManagement.Domain.Entities
             }
 
             //Rule 5: Hire date cannot be in the future
-            if (hireDate > DateTime.Today)
+            if (hireDate >DateOnly.FromDateTime(DateTime.Today))
             {
                 throw new ArgumentException("Hire date cannot be in the future.");
             }

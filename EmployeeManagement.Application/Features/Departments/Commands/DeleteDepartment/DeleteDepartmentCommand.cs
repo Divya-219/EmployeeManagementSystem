@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using MediatR;
 
 namespace EmployeeManagement.Application.Features.Departments.Commands.DeleteDepartment;
-public class DeleteDepartmentCommand:IRequest
+public class DeleteDepartmentCommand:IRequest<int>
 
 {
     public int Id {  get; set; }

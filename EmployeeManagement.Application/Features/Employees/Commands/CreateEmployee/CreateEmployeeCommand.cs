@@ -18,7 +18,7 @@ public class CreateEmployeeCommand:IRequest<int>
 
     public string PhoneNumber { get; set; } = string.Empty;
 
-    public DateTime HireDate { get; set; }
+    public DateOnly HireDate { get; set; }
 
     public decimal Salary { get; set; }
 

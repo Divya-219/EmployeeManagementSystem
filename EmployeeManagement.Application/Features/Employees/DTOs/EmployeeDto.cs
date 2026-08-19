@@ -12,7 +12,7 @@
 
     public decimal Salary { get; set; }
 
-    public DateTime HireDate { get; set; }
+    public DateOnly HireDate { get; set; }
 
     public string DepartmentName { get; set; } = string.Empty;
 

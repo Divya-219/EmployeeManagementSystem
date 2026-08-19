@@ -37,7 +37,7 @@ public class CreateEmployeeCommandValidator:AbstractValidator<CreateEmployeeComm
             .WithMessage("Salary must be greater than zero.");
 
         RuleFor(x => x.HireDate)
-            .LessThanOrEqualTo(DateTime.Today)
+              .LessThanOrEqualTo(DateOnly.FromDateTime(DateTime.Today))
             .WithMessage("Hire date cannot be in the future.");
 
         RuleFor(x => x.DepartmentId)

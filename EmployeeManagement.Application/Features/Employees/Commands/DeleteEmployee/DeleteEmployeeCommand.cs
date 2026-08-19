@@ -7,7 +7,7 @@ using MediatR;
 
 namespace EmployeeManagement.Application.Features.Employees.Commands.DeleteEmployee;
 
-public class DeleteEmployeeCommand:IRequest
+public class DeleteEmployeeCommand:IRequest<int>
 {
     public int Id { get; set; }
 }
