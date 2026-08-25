@@ -7,7 +7,7 @@ using MediatR;
 
 namespace EmployeeManagement.Application.Features.Employees.Commands.UpdateEmployee;
 
-public class UpdateEmployeeCommand : IRequest
+public class UpdateEmployeeCommand : IRequest<int>
 
 {
     public int Id { get; set; }
@@ -20,7 +20,7 @@ public class UpdateEmployeeCommand : IRequest
 
     public string PhoneNumber { get; set; } = string.Empty;
 
-    public DateTime HireDate { get; set; }
+    public DateOnly HireDate { get; set; }
 
     public decimal Salary { get; set; }
 

@@ -152,6 +152,13 @@ namespace EmployeeManagement.Domain.Entities
             FirstName = firstName;
             LastName = lastName;
         }
+        public void UpdateHireDate(DateOnly hireDate)
+        {
+            if (hireDate > DateOnly.FromDateTime(DateTime.Today))
+                throw new ArgumentException("Hire date cannot be in the future.");
+
+            HireDate = hireDate;
+        }
 
 
     }

@@ -40,7 +40,7 @@ public class UpdateEmployeeCommandValidator:AbstractValidator<UpdateEmployeeComm
             .WithMessage("Salary must be greater than 0.");
 
         RuleFor(x => x.HireDate)
-            .LessThanOrEqualTo(DateTime.Today)
+            .LessThanOrEqualTo(DateOnly.FromDateTime(DateTime.Today))
             .WithMessage("Hire Date cannot be in the future.");
 
         RuleFor(x => x.DepartmentId)

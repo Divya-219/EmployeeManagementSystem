@@ -19,7 +19,7 @@ public class GetEmployeeByIdQueryHandler :IRequestHandler<GetEmployeeByIdQuery,E
     }
     public async Task<EmployeeDto?>Handle(GetEmployeeByIdQuery request,CancellationToken cancellationToken)
     {
-        var employee = await _employeeRepository.GetByIdAsync(request.Id);
+        var employee = await _employeeRepository.GetEmployeeByIdWithDetailsAsync(request.Id);
         if (employee == null)
         {
             return null;
@@ -33,7 +33,11 @@ public class GetEmployeeByIdQueryHandler :IRequestHandler<GetEmployeeByIdQuery,E
             Email = employee.Email,
             PhoneNumber = employee.PhoneNumber,
             HireDate = employee.HireDate,
-            Salary = employee.Salary
+            Salary = employee.Salary,
+
+            DepartmentName = employee.Department?.Name ?? string.Empty,
+            RoleName = employee.Role?.Name ?? string.Empty,
+            Status = employee.Status.ToString()
         };
 
     }

@@ -12,5 +12,7 @@ public interface IEmployeeRepository: IBaseRepository<Employee>
 {
     
     Task<bool> ExistsAsync(int id);
+    Task<Employee?> GetEmployeeByIdWithDetailsAsync(int id);
+    Task<List<Employee>> GetAllEmployeesWithDetailsAsync();
 
 }

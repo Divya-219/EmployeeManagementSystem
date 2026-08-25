@@ -1,6 +1,7 @@
 ﻿using EmployeeManagement.Application.Features.Employees.Commands.CreateEmployee;
 using EmployeeManagement.Application.Features.Employees.Commands.DeleteEmployee;
 using EmployeeManagement.Application.Features.Employees.Commands.UpdateEmployee;
+using EmployeeManagement.Application.Features.Employees.Queries.GetAllEmployees;
 using EmployeeManagement.Application.Features.Employees.Queries.GetEmployeeById;
 using MediatR;
 using Microsoft.AspNetCore.Http;
@@ -25,10 +26,26 @@ public class EmployeesController : ControllerBase
     public async Task<IActionResult>Create(CreateEmployeeCommand command)
     {
         var employeeId = await _mediator.Send(command);
-        return CreatedAtAction(nameof(GetById), new {id=employeeId});
+
+        return CreatedAtAction(
+       nameof(GetById),
+       new { id = employeeId },
+       new
+       {
+           Id = employeeId,
+           Message = "Employee created successfully."
+       });
 
     }
- 
+    [HttpGet]
+    public async Task<IActionResult> GetAll()
+    {
+        var employees = await _mediator.Send(
+            new GetAllEmployeesQuery());
+
+        return Ok(employees);
+    }
+
     [HttpGet("{id}")]
     public async Task<IActionResult> GetById(int id)
     {
@@ -49,12 +66,17 @@ public class EmployeesController : ControllerBase
     {
         if (id != command.Id)
         {
-            return BadRequest("ID in URL does not match ID in request.");
+            return BadRequest(
+                "Id in URL and request body must match.");
         }
 
-        await _mediator.Send(command);
+        var updatedId = await _mediator.Send(command);
 
-        return NoContent();
+        return Ok(new
+        {
+            Id = updatedId,
+            Message = "Employee updated successfully."
+        });
     }
     [HttpDelete("{id}")]
     public async Task<IActionResult> Delete(int id)
@@ -64,9 +86,15 @@ public class EmployeesController : ControllerBase
             Id = id
         };
 
-        await _mediator.Send(command);
+       
 
-        return NoContent();
+        var deletedId = await _mediator.Send(command);
+
+        return Ok(new
+        {
+            Id = deletedId,
+            Message = "Employee deleted successfully."
+        });
     }
 
 

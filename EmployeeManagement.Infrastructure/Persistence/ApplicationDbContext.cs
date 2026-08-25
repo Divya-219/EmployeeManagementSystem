@@ -27,8 +27,17 @@ public class ApplicationDbContext : DbContext
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-        // Employee → Department
+        
         base.OnModelCreating(modelBuilder);
+        // Configure HireDate as SQL Server 'date'
+        modelBuilder.Entity<Employee>()
+        .Property(e => e.HireDate)
+        .HasColumnType("date");
+
+
+
+
+        // Employee → Department
         modelBuilder.Entity<Employee>()
         .HasOne(e=>e.Department)
         .WithMany(e=>e.Employees)

@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace EmployeeManagement.Application.Features.Employees.Commands.UpdateEmployee;
 
-public class UpdateEmployeeCommandHandler : IRequestHandler<UpdateEmployeeCommand>
+public class UpdateEmployeeCommandHandler : IRequestHandler<UpdateEmployeeCommand,int>
 {
     private readonly IEmployeeRepository _employeeRepository;
 
@@ -18,7 +18,7 @@ public class UpdateEmployeeCommandHandler : IRequestHandler<UpdateEmployeeComman
         _employeeRepository = employeeRepository;
     }
 
-    public async Task Handle(
+    public async Task<int> Handle(
         UpdateEmployeeCommand request,
         CancellationToken cancellationToken)
     {
@@ -26,16 +26,18 @@ public class UpdateEmployeeCommandHandler : IRequestHandler<UpdateEmployeeComman
 
         if (employee == null)
         {
-            throw new Exception("Employee not found.");
+            throw new Exception($"Employee with ID {request.Id} not found.");
         }
 
         employee.UpdateName(request.FirstName, request.LastName);
         employee.UpdateEmail(request.Email);
         employee.UpdatePhoneNumber(request.PhoneNumber);
         employee.UpdateSalary(request.Salary);
+        employee.UpdateHireDate(request.HireDate);
         employee.ChangeDepartment(request.DepartmentId);
         employee.ChangeRole(request.RoleId);
 
         await _employeeRepository.UpdateAsync(employee);
+        return employee.Id;
     }
 }

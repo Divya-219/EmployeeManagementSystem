@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace EmployeeManagement.Application.Features.Employees.Commands.DeleteEmployee;
 
-public class DeleteEmployeeCommandHandler: IRequestHandler<DeleteEmployeeCommand>
+public class DeleteEmployeeCommandHandler: IRequestHandler<DeleteEmployeeCommand,int>
 {
     private readonly IEmployeeRepository _employeeRepository;
 
@@ -16,7 +16,7 @@ public class DeleteEmployeeCommandHandler: IRequestHandler<DeleteEmployeeCommand
     {
         _employeeRepository = employeeRepository;
     }
-    public async Task Handle(
+    public async Task<int> Handle(
        DeleteEmployeeCommand request,
        CancellationToken cancellationToken)
     {
@@ -24,9 +24,10 @@ public class DeleteEmployeeCommandHandler: IRequestHandler<DeleteEmployeeCommand
 
         if (employee == null)
         {
-            throw new Exception("Employee not found.");
+            throw new Exception($"Employee with ID {request.Id} not found.");
         }
 
         await _employeeRepository.DeleteAsync(employee);
+        return employee.Id;
     }
 }
