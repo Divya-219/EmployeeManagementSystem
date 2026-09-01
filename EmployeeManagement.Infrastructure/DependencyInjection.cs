@@ -1,14 +1,16 @@
-﻿using System;
+﻿using EmployeeManagement.Application.Interfaces.Authentication;
+using EmployeeManagement.Application.Interfaces.Persistence;
+using EmployeeManagement.Infrastructure.Authentication;
+using EmployeeManagement.Infrastructure.Persistence;
+using EmployeeManagement.Infrastructure.Persistence.Repositories;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using EmployeeManagement.Infrastructure.Persistence.Repositories;
-using EmployeeManagement.Infrastructure.Persistence;
-using EmployeeManagement.Application.Interfaces.Persistence;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
 
 
 namespace EmployeeManagement.Infrastructure
@@ -25,6 +27,9 @@ namespace EmployeeManagement.Infrastructure
             services.AddScoped<IRoleRepository, RoleRepository>();
             services.AddScoped<IAttendanceRepository, AttendanceRepository>();
             services.AddScoped<ILeaveRequestRepository, LeaveRequestRepository>();
+            services.AddScoped<IUserRepository, UserRepository>();
+            services.AddScoped<IPasswordHasher, BCryptPasswordHasher>();
+            services.AddScoped<IJwtTokenService, JwtTokenService>();
 
             return services;
         }

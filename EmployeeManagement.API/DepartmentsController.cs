@@ -5,6 +5,7 @@ using EmployeeManagement.Application.Features.Departments.Queries.GetAllDepartme
 using EmployeeManagement.Application.Features.Departments.Queries.GetDepartmentById;
 using EmployeeManagement.Application.Features.Employees.Queries.GetAllEmployees;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -20,6 +21,7 @@ public class DepartmentsController : ControllerBase
     {
         _mediator = mediator;
     }
+    [Authorize(Roles = "Admin,Manager")]
     [HttpPost]
     public async Task<IActionResult> Create( CreateDepartmentCommand command)
     {
@@ -30,6 +32,7 @@ public class DepartmentsController : ControllerBase
             new { id },
             new { id });
     }
+    [Authorize]
     [HttpGet]
     public async Task <IActionResult>GetAll()
     {
@@ -48,6 +51,7 @@ public class DepartmentsController : ControllerBase
 
         return Ok(department);
     }
+    [Authorize(Roles = "Admin,Manager")]
     [HttpPut("{id}")]
     public async Task<IActionResult> Update(int id,UpdateDepartmentCommand command)
     {
@@ -63,7 +67,7 @@ public class DepartmentsController : ControllerBase
             Message = "Department updated successfully."
         });
     }
-
+    [Authorize(Roles = "Admin")]
     [HttpDelete("{id}")]
     public async Task<IActionResult> Delete(int id)
     {

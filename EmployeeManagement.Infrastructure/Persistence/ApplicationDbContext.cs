@@ -23,6 +23,7 @@ public class ApplicationDbContext : DbContext
     public DbSet<Attendance> Attendances { get; set; }
 
     public DbSet<LeaveRequest> LeaveRequests { get; set; }
+    public DbSet<User> Users { get; set; }
 
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -34,7 +35,9 @@ public class ApplicationDbContext : DbContext
         .Property(e => e.HireDate)
         .HasColumnType("date");
 
-
+        modelBuilder.Entity<Employee>()
+        .Property(e => e.Salary)
+        .HasPrecision(18, 2);
 
 
         // Employee → Department
@@ -69,7 +72,9 @@ public class ApplicationDbContext : DbContext
             .HasForeignKey(l => l.EmployeeId)
             .OnDelete(DeleteBehavior.Cascade);
 
-
+        modelBuilder.Entity<User>()
+    .Property(u => u.Role)
+    .HasConversion<string>();
 
 
     }

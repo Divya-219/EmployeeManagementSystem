@@ -4,12 +4,14 @@ using EmployeeManagement.Application.Features.Employees.Commands.UpdateEmployee;
 using EmployeeManagement.Application.Features.Employees.Queries.GetAllEmployees;
 using EmployeeManagement.Application.Features.Employees.Queries.GetEmployeeById;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 
 namespace EmployeeManagement.API;
 
+[Authorize]
 [Route("api/[controller]")]
 [ApiController]
 public class EmployeesController : ControllerBase
@@ -22,6 +24,7 @@ public class EmployeesController : ControllerBase
 
 
     }
+    [Authorize(Roles = "Admin,Manager")]
     [HttpPost]
     public async Task<IActionResult>Create(CreateEmployeeCommand command)
     {
@@ -45,7 +48,7 @@ public class EmployeesController : ControllerBase
 
         return Ok(employees);
     }
-
+    [Authorize]
     [HttpGet("{id}")]
     public async Task<IActionResult> GetById(int id)
     {
@@ -59,6 +62,7 @@ public class EmployeesController : ControllerBase
 
         return Ok(employee);
     }
+    [Authorize(Roles = "Admin,Manager")]
     [HttpPut("{id}")]
     public async Task<IActionResult> Update(
     int id,
@@ -78,6 +82,7 @@ public class EmployeesController : ControllerBase
             Message = "Employee updated successfully."
         });
     }
+    [Authorize(Roles = "Admin")]
     [HttpDelete("{id}")]
     public async Task<IActionResult> Delete(int id)
     {

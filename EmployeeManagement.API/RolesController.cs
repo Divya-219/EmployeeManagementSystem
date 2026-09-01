@@ -4,11 +4,13 @@ using EmployeeManagement.Application.Features.Roles.Commands.UpdateRole;
 using EmployeeManagement.Application.Features.Roles.Queries.GetAllRoles;
 using EmployeeManagement.Application.Features.Roles.Queries.GetRoleById;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace EmployeeManagement.API;
 
+[Authorize(Roles = "Admin")]
 [Route("api/[controller]")]
 [ApiController]
 public class RolesController : ControllerBase
@@ -40,6 +42,7 @@ public class RolesController : ControllerBase
 
         return Ok(roles);
     }
+    [Authorize(Roles = "Admin")]
     [HttpGet("{id}")]
     public async Task<IActionResult> GetById(int id)
     {
@@ -53,6 +56,7 @@ public class RolesController : ControllerBase
 
         return Ok(role);
     }
+    [Authorize(Roles = "Admin")]
     [HttpDelete("{id}")]
     public async Task<IActionResult> Delete(int id)
     {
