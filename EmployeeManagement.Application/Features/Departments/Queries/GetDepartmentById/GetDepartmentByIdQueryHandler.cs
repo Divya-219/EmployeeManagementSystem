@@ -17,18 +17,18 @@ public  class GetDepartmentByIdQueryHandler:IRequestHandler<GetDepartmentByIdQue
     {
         _departmentRepository = departmentRepository;
     }
-    public async Task<DepartmentDto>Handle(GetDepartmentByIdQuery query,CancellationToken cancellationToken)
+    public async Task<DepartmentDto?>Handle(GetDepartmentByIdQuery query,CancellationToken cancellationToken)
     {
-        var departments=await _departmentRepository.GetByIdAsync(query.Id);
-        if(departments==null)
+        var department=await _departmentRepository.GetByIdAsync(query.Id);
+        if(department==null)
         {
-            throw new Exception($"department with Id {query.Id}was not found");
+            return null;
         }
         return new DepartmentDto
         {
-            Id = departments.Id,
-            Name = departments.Name,
-            Description = departments.Description
+            Id = department.Id,
+            Name = department.Name,
+            Description = department.Description
         };
 
     }

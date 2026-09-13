@@ -39,6 +39,7 @@ public class DepartmentsController : ControllerBase
         var departments=await _mediator.Send(new GetAllDepartmentsQuery());
         return Ok(departments);
     }
+    [Authorize]
     [HttpGet("{id}")]
     public async Task<IActionResult> GetById(int id)
     {
@@ -48,7 +49,11 @@ public class DepartmentsController : ControllerBase
         };
 
         var department = await _mediator.Send(query);
-
+        if (department == null)
+        {
+            return NotFound(
+                $"Department with ID {id} was not found.");
+        }
         return Ok(department);
     }
     [Authorize(Roles = "Admin,Manager")]

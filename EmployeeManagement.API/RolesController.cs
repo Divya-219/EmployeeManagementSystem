@@ -10,7 +10,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace EmployeeManagement.API;
 
-[Authorize(Roles = "Admin")]
+[Authorize]
 [Route("api/[controller]")]
 [ApiController]
 public class RolesController : ControllerBase
@@ -21,6 +21,7 @@ public class RolesController : ControllerBase
     {
         _mediator = mediator;
     }
+    [Authorize(Roles = "Admin")]
     [HttpPost]
     public async Task<IActionResult> Create(CreateRoleCommand command)
     {
@@ -34,7 +35,7 @@ public class RolesController : ControllerBase
                  Message = "Role created successfully."
              });
     }
-
+    [Authorize]
     [HttpGet]
     public async Task<IActionResult> GetAll()
     {
@@ -42,12 +43,11 @@ public class RolesController : ControllerBase
 
         return Ok(roles);
     }
-    [Authorize(Roles = "Admin")]
+    [Authorize]
     [HttpGet("{id}")]
     public async Task<IActionResult> GetById(int id)
     {
-        var role = await _mediator.Send(
-            new GetRoleByIdQuery(id));
+        var role = await _mediator.Send( new GetRoleByIdQuery(id));
 
         if (role == null)
         {
@@ -73,6 +73,7 @@ public class RolesController : ControllerBase
             Message = "Role deleted successfully."
         });
     }
+    [Authorize(Roles = "Admin")]
     [HttpPut("{id}")]
     public async Task<IActionResult> Update(
         int id,

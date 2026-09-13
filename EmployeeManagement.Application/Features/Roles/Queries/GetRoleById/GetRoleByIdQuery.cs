@@ -5,10 +5,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using EmployeeManagement.Application.Features.Roles.DTOs;
 
 namespace EmployeeManagement.Application.Features.Roles.Queries.GetRoleById;
 
-public class GetRoleByIdQuery:IRequest<Role?>
+public class GetRoleByIdQuery:IRequest<RoleDto?>
 {
     public int Id {  get; set; }
 

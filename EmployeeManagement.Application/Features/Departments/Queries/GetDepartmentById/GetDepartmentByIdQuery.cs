@@ -8,7 +8,7 @@ using EmployeeManagement.Application.Features.Departments.DTOs;
 
 namespace EmployeeManagement.Application.Features.Departments.Queries.GetDepartmentById;
 
-public class GetDepartmentByIdQuery : IRequest<DepartmentDto>
+public class GetDepartmentByIdQuery : IRequest<DepartmentDto ?>
 {
     public int Id { get; set; }
 }
