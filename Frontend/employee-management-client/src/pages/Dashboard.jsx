@@ -1,11 +1,11 @@
 function Dashboard() {
     return (
         <div>
-            <h1>Employee Management System</h1>
+            <h1>Dashboard</h1>
 
-            <h2>Dashboard</h2>
-
-            <p>Welcome to the Employee Management System.</p>
+            <p>
+                Welcome to the Employee Management System.
+            </p>
         </div>
     );
 }
