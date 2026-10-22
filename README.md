@@ -1,7 +1,7 @@
 
 # Employee Management System
 
-A full-stack project I am building as a beginner developer to learn backend and frontend development. The application is designed to help manage employee information through a web interface and a REST API.
+A full-stack project I am building as a  developer to learn backend and frontend development. The application is designed to help manage employee information through a web interface and a REST API.
 
 ## About the Project
 
