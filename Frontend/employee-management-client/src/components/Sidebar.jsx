@@ -8,6 +8,7 @@ function Sidebar()
                 <li><Link to="/dashboard">Dashboard</Link></li>
                 <li><Link to="/employees">Employees</Link></li>
                 <li><Link to="/departments">Departments</Link></li>
+                   <li><Link to="/roles">Roles</Link></li>
             </ul>  
         </aside>
     );
