@@ -237,7 +237,15 @@ body
         flex-direction: column;
     }
 }
-
+.login-error {
+    color: #dc2626;
+    background-color: #fef2f2;
+    border: 1px solid #fecaca;
+    border-radius: 6px;
+    padding: 10px;
+    margin-bottom: 16px;
+    font-size: 14px;
+}
 
 .login-page
 {
@@ -597,3 +605,449 @@ padding: 0 20px;
         white-space: nowrap;
     }
 }
+
+
+/* Dashboard Page */
+
+.dashboard-page {
+    width: 100%;
+    padding: 30px;
+}
+
+.dashboard-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+}
+
+.dashboard-header h1 {
+    font-size: 28px;
+    margin-bottom: 8px;
+    color: #1e293b;
+}
+
+.dashboard-header p {
+    color: #64748b;
+    font-size: 15px;
+}
+
+/* Summary Cards */
+
+.dashboard-cards {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 20px;
+}
+
+.dashboard-card {
+    background: #ffffff;
+    padding: 24px;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+}
+
+.dashboard-card h3 {
+    color: #64748b;
+    font-size: 15px;
+    font-weight: 500;
+    margin-bottom: 15px;
+}
+
+.dashboard-number {
+    color: #2563eb;
+    font-size: 32px;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+.dashboard-card a {
+    color: #2563eb;
+    font-size: 14px;
+    text-decoration: none;
+}
+
+.dashboard-card a:hover {
+    text-decoration: underline;
+}
+
+/* Welcome Section */
+
+.dashboard-welcome {
+    margin-top: 25px;
+    padding: 25px;
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+}
+
+.dashboard-welcome h2 {
+    color: #1e293b;
+    font-size: 20px;
+    margin-bottom: 12px;
+}
+
+.dashboard-welcome p {
+    color: #64748b;
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+.dashboard-button {
+    display: inline-block;
+    background: #2563eb;
+    color: #ffffff;
+    padding: 11px 18px;
+    border-radius: 6px;
+    text-decoration: none;
+}
+
+.dashboard-button:hover {
+    background: #1d4ed8;
+}
+
+/* Responsive Design */
+
+@media (max-width: 768px) {
+    .dashboard-page {
+        padding: 16px;
+    }
+
+    .dashboard-cards {
+        grid-template-columns: 1fr;
+    }
+}
+
+
+
+/* Departments Page */
+
+.departments-page {
+    width: 100%;
+    padding: 30px;
+}
+
+.departments-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 25px;
+}
+
+.departments-header h1 {
+    color: #1e293b;
+    font-size: 28px;
+    margin-bottom: 8px;
+}
+
+.departments-header p {
+    color: #64748b;
+    font-size: 15px;
+}
+
+.department-add-button,
+.department-form-actions button {
+    background: #2563eb;
+    color: white;
+    border: none;
+    padding: 11px 16px;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.department-add-button:hover,
+.department-form-actions button:hover {
+    background: #1d4ed8;
+}
+
+.department-form-card,
+.departments-table-card {
+    background: white;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    padding: 24px;
+    margin-bottom: 24px;
+}
+
+.department-form-card h2,
+.departments-table-card h2 {
+    color: #1e293b;
+    font-size: 20px;
+    margin-bottom: 20px;
+}
+
+.department-form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 18px;
+}
+
+.department-form-group label {
+    color: #334155;
+    font-weight: 500;
+}
+
+.department-form-group input,
+.department-form-group textarea {
+    width: 100%;
+    padding: 11px;
+    border: 1px solid #cbd5e1;
+    border-radius: 6px;
+    font: inherit;
+}
+
+.department-form-group input:focus,
+.department-form-group textarea:focus {
+    outline: 2px solid #93c5fd;
+    border-color: #2563eb;
+}
+
+.department-form-actions {
+    display: flex;
+    gap: 10px;
+}
+
+.department-form-actions .department-cancel-button {
+    background: #e2e8f0;
+    color: #334155;
+}
+
+.department-form-actions .department-cancel-button:hover {
+    background: #cbd5e1;
+}
+
+.departments-table-wrapper {
+    width: 100%;
+    overflow-x: auto;
+}
+
+.departments-table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+}
+
+.departments-table th,
+.departments-table td {
+    padding: 14px 12px;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+.departments-table th {
+    background: #f8fafc;
+    color: #475569;
+    font-size: 14px;
+}
+
+.departments-table td {
+    color: #334155;
+    font-size: 14px;
+}
+
+.department-actions {
+    display: flex;
+    gap: 8px;
+}
+
+.department-edit-button,
+.department-delete-button {
+    padding: 7px 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.department-edit-button {
+    background: #dbeafe;
+    color: #1d4ed8;
+}
+
+.department-delete-button {
+    background: #fee2e2;
+    color: #b91c1c;
+}
+
+@media (max-width: 768px) {
+    .departments-page {
+        padding: 16px;
+    }
+
+    .departments-header {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .departments-table-card,
+    .department-form-card {
+        padding: 16px;
+    }
+}
+
+/* Roles Page */
+
+.roles-page {
+    width: 100%;
+    padding: 30px;
+}
+
+.roles-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 25px;
+}
+
+.roles-header h1 {
+    color: #1e293b;
+    font-size: 28px;
+    margin-bottom: 8px;
+}
+
+.roles-header p {
+    color: #64748b;
+    font-size: 15px;
+}
+
+.role-add-button,
+.role-form-actions button {
+    background: #2563eb;
+    color: white;
+    border: none;
+    padding: 11px 16px;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.role-add-button:hover,
+.role-form-actions button:hover {
+    background: #1d4ed8;
+}
+
+.role-form-card,
+.roles-table-card {
+    background: white;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    padding: 24px;
+    margin-bottom: 24px;
+}
+
+.role-form-card h2,
+.roles-table-card h2 {
+    color: #1e293b;
+    font-size: 20px;
+    margin-bottom: 20px;
+}
+
+.role-form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 18px;
+}
+
+.role-form-group label {
+    color: #334155;
+    font-weight: 500;
+}
+
+.role-form-group input,
+.role-form-group textarea {
+    width: 100%;
+    padding: 11px;
+    border: 1px solid #cbd5e1;
+    border-radius: 6px;
+    font: inherit;
+}
+
+.role-form-group input:focus,
+.role-form-group textarea:focus {
+    outline: 2px solid #93c5fd;
+    border-color: #2563eb;
+}
+
+.role-form-actions {
+    display: flex;
+    gap: 10px;
+}
+
+.role-form-actions .role-cancel-button {
+    background: #e2e8f0;
+    color: #334155;
+}
+
+.role-form-actions .role-cancel-button:hover {
+    background: #cbd5e1;
+}
+
+.roles-table-wrapper {
+    width: 100%;
+    overflow-x: auto;
+}
+
+.roles-table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+}
+
+.roles-table th,
+.roles-table td {
+    padding: 14px 12px;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+.roles-table th {
+    background: #f8fafc;
+    color: #475569;
+    font-size: 14px;
+}
+
+.roles-table td {
+    color: #334155;
+    font-size: 14px;
+}
+
+.role-actions {
+    display: flex;
+    gap: 8px;
+}
+
+.role-edit-button,
+.role-delete-button {
+    padding: 7px 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.role-edit-button {
+    background: #dbeafe;
+    color: #1d4ed8;
+}
+
+.role-delete-button {
+    background: #fee2e2;
+    color: #b91c1c;
+}
+
+@media (max-width: 768px) {
+    .roles-page {
+        padding: 16px;
+    }
+
+    .roles-header {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .roles-table-card,
+    .role-form-card {
+        padding: 16px;
+    }
+}
+
+
